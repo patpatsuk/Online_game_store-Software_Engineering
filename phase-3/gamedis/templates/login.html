@@ -1,0 +1,69 @@
+{% extends 'root.html' %} {% block title %}LOGIN{% endblock %} {% block body %}
+<style>
+  /* body {
+    background-image: url("https://cdn.pixabay.com/photo/2022/05/01/16/22/the-calendar-7167933_1280.png");
+
+    background-size: 90%;
+    animation: gradient 12s ease infinite;
+    height: 110vh;
+  } */
+  div.login {
+    opacity: 0.85;
+  }
+</style>
+<div class="login">
+  <div class="mx-2 my-1 py-1 px-4">
+    <h2 align="center" style="color: aqua; font-weight: bolder">LOGIN</h2>
+
+    <form
+      class="form-control form-control-lg border border-3 border-success"
+      action="/iden-operation/request/login"
+      method="POST"
+    >
+      <div class="py-2 my-1" align="center">
+        <label for="inputUsername" class="my-2"
+          ><span style="font-weight: bold">Username</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="inputUsername"
+          name="inputUsername"
+          placeholder="Username"
+        />
+      </div>
+      <div class="my-1" align="center"></div>
+      <div class="py-1" align="center">
+        <label for="inputPassword" class="my-2"
+          ><span style="font-weight: bold">Password</span>
+        </label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          name="inputPassword"
+          placeholder="Password"
+        />
+      </div>
+      <div class="col gap-1 py-2" align="center">
+        <button
+          type="submit"
+          class="btn btn-lg btn-primary mb-3"
+          align="center"
+        >
+          Confirm Identity</button
+        ><br />
+        OR
+      </div>
+
+      <div class="py-1 my-1" align="center">
+        <a href="/iden-operation/signup">
+          <button type="button" class="btn btn-secondary mb-3">
+            Signup
+          </button></a
+        >
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

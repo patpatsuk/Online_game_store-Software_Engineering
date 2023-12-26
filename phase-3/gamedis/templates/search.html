@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Search{% endblock %}</title>
+    {% extends 'root.html' %}
+  </head>
+
+  {% block body %}
+  <body>
+    <div align="center">
+      <div align="center" class="col col-3 my-2 mx-1 py-1">
+        <form
+          action="{{ url_for('search.search') }}"
+          method="GET"
+          class="form-control-lg"
+        >
+          <div class="input-group my-1">
+            <span class="input-group-text">
+              <input
+                type="search"
+                name="keyword"
+                class="form-control-lg"
+                placeholder="Search..."
+                class="form-control form-control-lg"
+              /><button type="submit" class="btn btn-lg btn-primary">
+                Search
+              </button></span
+            >
+          </div>
+          <div class="input-group my-1">
+            <span class="input-group-text"> Filter by Genre:</span>
+            <select name="genre" id="genre" class="form-select">
+              <option value="">All</option>
+              {% for genre in game_genres %}
+              <option value="{{ genre }}">{{ genre }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="input-group my-1">
+            <span class="input-group-text"> Filter by Price Range:</span>
+            <select name="price_range" id="price_range" class="form-select">
+              <option value="">All</option>
+              {% for price_range in price_ranges %}
+              <option value="{{ price_range }}">{{ price_range }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="input-group my-1">
+            <span class="input-group-text"> Filter by Creator:</span>
+            <select name="creator" id="creator" class="form-select">
+              <option value="">All</option>
+              {% for creator in creator_names %}
+              <option value="{{ creator }}">{{ creator }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div align="center">
+      <a href="/search"
+        ><button type="button" class="btn btn-secondary">Reset</button></a
+      >
+    </div>
+    {% if results %}
+
+    <div id="results" class="px-2 py-2 mx-3 my-3" align="center">
+      <h1
+        style="
+          font-size: xx-large;
+          color: navy;
+          font-weight: bold;
+          font-size: xx-large;
+        "
+      >
+        Search Results
+      </h1>
+      <table
+        class="table table-danger table-hover table-striped-columns border border-3"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Page item order</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price (Baht)</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Pic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- https://stackoverflow.com/questions/12145434/how-to-output-loop-counter-in-python-jinja-template -->
+          {% for doc in results %}<!--  equals to for index, doc in enumerate(results) -->
+          {% if loop.index % 2 != 0 %}
+          <tr class="table-success">
+            <th scope="row">{{loop.index}}</th>
+            <td>{{doc['Name']}}</td>
+            <td>{{doc['Price']}}</td>
+            <td>{{doc['Genre']}}</td>
+            <td>
+              <img src="{{doc['Image']}}" alt="" width="auto" height="100" />
+            </td>
+          </tr>
+          {% elif loop.index % 2 == 0 %}
+          <tr class="table-warning">
+            <th scope="row">{{loop.index}}</th>
+            <td>{{doc['Name']}}</td>
+            <td>{{doc['Price']}}</td>
+            <td>{{doc['Genre']}}</td>
+            <td>
+              <img src="{{doc['Image']}}" alt="" width="auto" height="100" />
+            </td>
+          </tr>
+          {% endif %} {% endfor %}
+        </tbody>
+      </table>
+      <!-- page navigation bar adapted from Pisol Ruenin-->
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_no!=1 %}
+          <li class="page-item">
+            <a class="page-link" href="?keyword={{ keyword }}&page=1">First</a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?keyword={{ keyword }}&page={{ page_no-1 }}"
+              aria-label="Previous"
+            >
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?keyword={{ keyword }}&page={{ page_no-1 }}"
+              >{{ page_no-1 }}</a
+            >
+          </li>
+          {% endif %} {% if totalPages!=1 %}
+          <li class="page-item active">
+            <a class="page-link" href="#">{{ page_no }}</a>
+          </li>
+          {% endif %} {% if page_no < totalPages %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?keyword={{ keyword }}&page={{ page_no+1 }}"
+              >{{ page_no+1 }}</a
+            >
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?keyword={{ keyword }}&page={{ page_no+1 }}"
+              aria-label="Next"
+            >
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?keyword={{ keyword }}&page={{ totalPages }}"
+              >Last</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% else %} {% if results == [] %}
+    <div class="mx-2 my-2" align="center" style="top: 50%">
+      <h1>Sorry, we could not found anything related.</h1>
+    </div>
+    {% endif %} {% endif %}
+  </body>
+  {% endblock %}
+</html>

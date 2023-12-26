@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Search</title>
+  </head>
+
+  <body>
+    <form action="{{ url_for('search') }}" method="GET">
+      <input type="search" name="keyword" placeholder="Search..." />
+
+      <label for="genre">Filter by Genre:</label>
+      <select name="genre" id="genre">
+        <option value="">All</option>
+        {% for genre in game_genres %}
+        <option value="{{ creator }}">{{ genre }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="price_range">Filter by Price Range:</label>
+      <select name="price_range" id="price_range">
+        <option value="">All</option>
+        {% for price_range in price_ranges %}
+        <option value="{{ price_range }}">{{ price_range }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="creator">Filter by Creator:</label>
+      <select name="creator" id="creator">
+        <option value="">All</option>
+        {% for creator in creator_names %}
+        <option value="{{ creator }}">{{ creator }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>

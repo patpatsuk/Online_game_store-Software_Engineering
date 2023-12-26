@@ -1,0 +1,76 @@
+{% extends 'root.html' %} {% block title %}SIGNUP{% endblock %} {% block body %}
+<style>
+  div.signup {
+    opacity: 0.85;
+  }
+</style>
+<div class="signup">
+  <div class="mx-2 my-1 py-1 px-4">
+    <h2 align="center" style="color: aqua; font-weight: bolder">SIGNUP</h2>
+
+    <form
+      class="form-control form-control-lg border border-3 border-success"
+      action="/iden-operation/request/signup"
+      method="POST"
+    >
+      <div class="py-2 my-1" align="center">
+        <label for="inputUsername" class="my-2"
+          ><span style="font-weight: bold">Username</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="inputUsername"
+          name="inputUsername"
+          placeholder="Username"
+          required
+        />
+      </div>
+      <div class="my-1" align="center"></div>
+      <div class="py-1" align="center">
+        <label for="inputPassword" class="my-2"
+          ><span style="font-weight: bold">Password </span>
+        </label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          name="inputPassword"
+          placeholder="Password"
+          pattern="(?=.*[a-z,0-9,A-Z]).{8,}"
+          title="Must contain at least 8 or more characters"
+          required
+        />
+
+        <label for="inputPassword2" class="my-2"
+          ><span style="font-weight: bold">Confirm Password </span>
+        </label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          name="inputPassword2"
+          placeholder="Confirm Password"
+          required
+        />
+      </div>
+      <div class="col gap-1 py-2" align="center">
+        <button
+          type="submit"
+          class="btn btn-lg btn-primary mb-3"
+          align="center"
+        >
+          Create Account</button
+        ><br />
+        OR
+      </div>
+
+      <div class="py-1 my-1" align="center">
+        <a href="/login">
+          <button type="button" class="btn btn-secondary mb-3">Login</button></a
+        >
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

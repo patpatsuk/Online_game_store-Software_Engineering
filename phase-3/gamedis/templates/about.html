@@ -1,0 +1,83 @@
+{% extends 'root.html' %} {% block title %}ABOUT{% endblock %} {% block body %}
+<!-- https://www.w3schools.com/howto/howto_css_list_without_bullets.asp -->
+<style>
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+</style>
+<div align="center">
+  <div id="about" class="col-7 my-2 mx-1 px-2">
+    <div align="center">
+      <h1>2023-ITCS371-3-__init__.py</h1>
+
+      <span style="font-weight: bold">
+        <a
+          class="link-danger"
+          target="_blank"
+          href="https://github.com/ICT-Mahidol/2023-ITCS371-3-__init__.py.git"
+          >2023-ITCS371-3-__init__.py Repo
+        </a></span
+      >
+      <h2><code> __init__.py</code> Team's members</h2>
+      <table
+        class="table table-dark table-hover table-striped-columns border border-3"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">GitHub</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-success">
+            <th scope="row">6488004</th>
+            <td>Kittipich Aiumbhornsin</td>
+            <td><a href="https://github.com/ngzh-luke">(GitHub)</a></td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">6488073</th>
+            <td>Chalisa Sae-ngow</td>
+            <td><a href="https://github.com/NiChalii">(GitHub)</a></td>
+          </tr>
+          <tr class="table-success">
+            <th scope="row">6488087</th>
+            <td>Thanatchaya Sujarit</td>
+            <td><a href="https://github.com/ViewSuj">(GitHub)</a></td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">6488089</th>
+            <td>Pattaravit Suksri</td>
+            <td><a href="https://github.com/patchyysuk">(GitHub)</a></td>
+          </tr>
+          <tr class="table-success">
+            <th scope="row">6488134</th>
+            <td>Jirateep Rudeerudchanawong</td>
+            <td><a href="https://github.com/kikikieieiei">(GitHub)</a></td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">6488168</th>
+            <td>Linfeng Zhang</td>
+            <td><a href="https://github.com/Lr1zz">(GitHub)</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3"></div>
+<div class="px-2 py-1 bg-info fixed-bottom" align="center" id="footer">
+  <span style="font-weight: bold">BY: <code>__init__.py</code> Team</span><br />
+  <span style="font-weight: 500">
+    <a
+      class="link-danger"
+      target="_blank"
+      href="https://github.com/ICT-Mahidol/2023-ITCS371-3-__init__.py.git"
+      >2023-ITCS371-3-__init__.py Repo
+    </a></span
+  >
+</div>
+{% endblock %}
