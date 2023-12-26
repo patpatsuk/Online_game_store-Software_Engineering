@@ -1,6 +1,6 @@
-# 2023-ITCS371-3-__init__.py
+# Online game store | Software Engineering
 
-## `__init__.py` Team's members
+## Team's members
 
  - 6488004 Kittipich Aiumbhornsin [(GitHub)](https://github.com/ngzh-luke)
  - 6488073 Chalisa Sae-ngow [(GitHub)](https://github.com/NiChalii)
